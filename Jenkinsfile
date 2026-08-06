@@ -5,11 +5,11 @@ pipeline {
 
         stage('Welcome') {
             steps {
-                echo 'Welcome to Pipeline from SCM'
+                echo 'Welcome to Pipeline as Code'
             }
         }
 
-        stage('Print Workspace') {
+        stage('Workspace') {
             steps {
                 sh 'pwd'
             }
@@ -21,33 +21,10 @@ pipeline {
             }
         }
 
-        stage('Create File') {
-            steps {
-                sh 'echo "Hello from Jenkins Pipeline" > output.txt'
-                sh 'cat output.txt'
-            }
-        }
-
-        stage('Print Date') {
-            steps {
-                sh 'date'
-            }
-        }
-
         stage('Finish') {
             steps {
-                echo 'Pipeline from SCM Executed Successfully!'
+                echo 'Pipeline Executed Successfully!'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build Completed Successfully!'
-        }
-
-        failure {
-            echo 'Build Failed!'
         }
     }
 }
