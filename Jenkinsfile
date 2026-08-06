@@ -3,28 +3,38 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Welcome') {
             steps {
-                echo 'Code checked out successfully.'
+                echo 'Welcome to Feature Branch'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'echo "Building Application..."'
+                sh 'echo "Building Feature Branch..."'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'echo "Running Tests..."'
+                sh 'echo "Running Feature Branch Tests..."'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'echo "Deployment Completed."'
+                sh 'echo "Deploying Feature Branch..."'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Feature Branch Build Completed Successfully!'
+        }
+
+        failure {
+            echo 'Feature Branch Build Failed!'
         }
     }
 }
