@@ -3,28 +3,51 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Welcome') {
             steps {
-                echo 'Code checked out successfully.'
+                echo 'Welcome to Pipeline from SCM'
             }
         }
 
-        stage('Build') {
+        stage('Print Workspace') {
             steps {
-                sh 'echo "Building Application..."'
+                sh 'pwd'
             }
         }
 
-        stage('Test') {
+        stage('List Files') {
             steps {
-                sh 'echo "Running Tests..."'
+                sh 'ls -la'
             }
         }
 
-        stage('Deploy') {
+        stage('Create File') {
             steps {
-                sh 'echo "Deployment Completed."'
+                sh 'echo "Hello from Jenkins Pipeline" > output.txt'
+                sh 'cat output.txt'
             }
+        }
+
+        stage('Print Date') {
+            steps {
+                sh 'date'
+            }
+        }
+
+        stage('Finish') {
+            steps {
+                echo 'Pipeline from SCM Executed Successfully!'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build Completed Successfully!'
+        }
+
+        failure {
+            echo 'Build Failed!'
         }
     }
 }
